@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-    <p>Skittles</p>
+    <p id="something">Skittles</p>
     <p>Fear</p>
     <p>Anger</p>
 
@@ -16,7 +16,12 @@
       var text = document.createTextNode("A Jedi craves not these things");
       newPara.appendChild(text);
       document.body.appendChild(newPara);
-      paragraphs.replaceChild("Agression", paragraphs[])
+      var quotePara = document.createElement("p");
+      var text2 = document.createTextNode("Aggression");
+      quotePara.appendChild(text2);
+      var skittleselement = document.getElementById('something');
+
+      document.body.replaceChild(quotePara, skittleselement);
     </script>
 </body>
 </html>
