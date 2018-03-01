@@ -13,9 +13,13 @@
 		<button type="button" onclick="addContent()">
 			Add Content!
 		</button>
-		<form name='search' method="get" onsubmit="addSearchItem()">
+		<form name='search'>
 			<input type="text" name="q" id="searchbox" size="50">
-			<input type="submit" value="Noogle it!">
+			<input type="button" value="Noogle it!" onclick="addSearchItem()">
+		</form>
+		<form name='remove'>
+			<input type="text" name="q" id="searchbox" size="50">
+			<input type="button" value="Remove Item" onclick="removeItem()">
 		</form>
 		<div id="content">
 			<!-- empty div to manipulate -->

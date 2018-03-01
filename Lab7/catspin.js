@@ -15,3 +15,6 @@ function animate(time) {
 requestAnimationFrame(animate);
 
 
+function getClicked() {
+  alert("I have been clicked");
+}

@@ -28,5 +28,11 @@ function addSearchItem() {
 
 	//Used to test if the method is actually called
 	//alert("Hello");
-	document.getElementById('content').innerHTML = "Hello";
+	var previousText = document.getElementById('content').innerHTML;
+	var searchText = document.getElementById('searchbox').value;
+	document.getElementById('content').innerHTML = previousText + "<ul><li>" + searchText + "</li></ul>";
+}
+
+function removeItem() {
+	var contentText = document.getElementById('content').innerHTML.split("><");
 }
