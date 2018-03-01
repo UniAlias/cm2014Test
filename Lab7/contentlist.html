@@ -10,7 +10,13 @@
 	</head>
 	<body id="task2" onload="">
 	<!--add a button to call our addContent method-->
-
+		<button type="button" onclick="addContent()">
+			Add Content!
+		</button>
+		<form name='search' method="get" onsubmit="validate();" action="">
+			<input type="text" name="q" id="searchbox" size="50">
+			<input type="button" value="Noogle it!" id="addButton">
+		</form>
 		<div id="content">
 			<!-- empty div to manipulate -->
 		</div>
