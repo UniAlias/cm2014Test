@@ -17,9 +17,16 @@ function addContent () {
 	document.getElementById('content').innerHTML = items_html;
 }
 
-document.forms["search"].onsubmit = function(){
-	var alreadyHTML = document.getElementById("content").innerHTML.value;
-	var element2add = document.getElementById("searchbox").value;
-	var newText = alreadyHTML + "<li>" + element2add + "</li>";
-	document.getElementById("content").innerHTML = newText;
+function addSearchItem() {
+	//get the html that already exists
+	//var alreadyExists = document.getElementById('content').innerHTML;
+	//get the text from the searchbox
+	//var searchText = document.getElementById('searchbox').value;
+	//add the two strings together
+	//var newContents = alreadyExists + "<"
+	//modify the html of the content div
+
+	//Used to test if the method is actually called
+	//alert("Hello");
+	document.getElementById('content').innerHTML = "Hello";
 }
