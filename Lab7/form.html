@@ -33,6 +33,10 @@
 			if (!searchvalue) {
 				return true;
 			}
+			else if (searchvalue === "") {
+				alert("Please type a search query!");
+				return false;
+			}
 			else {
 				alert("Please type a search query!");
 				return false;
