@@ -59,6 +59,6 @@ app.post('/search', function(req, res) {
 app.post('/delete', function(req, res) {
   db.collection('quotes').deleteOne(req.body, function(err, result) {
     if (err) throw err;
-    res.redirect('/');
+    res.redirect('/all');
   });
 });
