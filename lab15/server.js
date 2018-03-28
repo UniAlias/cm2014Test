@@ -66,7 +66,7 @@ app.post('/delete', function(req, res) {
 //This is for updating
 app.post('/update', function(req, res) {
   var query = {quote: req.body.quote};
-  var newvalues = {$set: {req.body.newname, quote: req.body.newquote}};
+  var newvalues = {$set: {name: req.body.newname, quote: req.body.newquote}};
 
   db.collection('quotes').updateOne(query, newvalues, function(err, result) {
     if(err) throw err;
