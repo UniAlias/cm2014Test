@@ -39,6 +39,7 @@ app.post('/quotes', function (req, res) {
   })
 });
 
+//This is for searching
 app.post('/search', function(req, res) {
   db.collection('quotes').find(req.body).toArray(function(err, result) {
     if (err) throw err;
@@ -51,5 +52,13 @@ app.post('/search', function(req, res) {
       output += "</div>";
     }
     res.send(output);
+  });
+});
+
+//This is for deleting
+app.post('/delete', function(req, res) {
+  db.collection('quotes').deleteOne(req.body, function(err, result) {
+    if (err) throw err;
+    res.redirect('/');
   });
 });
