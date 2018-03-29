@@ -186,16 +186,3 @@ var datatostore = {
     res.redirect('/')
   })
 });
-
-
-//acquire the currently logged in user
-db.collection('people').findOne({
-  "login.username": uname
-}, function(err, result) {
-  if (err) throw err;
-  //console.log(uname+ ":" + result);
-  //finally we just send the result to the user page as "user"
-  res.render('pages/profile', {
-    user: result
-  })
-});
