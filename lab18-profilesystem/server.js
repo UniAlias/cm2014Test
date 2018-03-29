@@ -44,15 +44,17 @@ app.get('/', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
 
   //get the currently logged in user
-  var uname2 = req.session.username;
+  var uname2 = req.query.username;
   //console.log(username);
 
   db.collection('people').findOne({
     "login.username": uname2
   }, function(err, result) {
     if (err) throw err;
-    res.render('pages/users', {
-      user2: result
+    //console.log(uname+ ":" + result);
+    //finally we just send the result to the user page as "user"
+    res.render('pages/profile', {
+      user: result
     })
   });
 
