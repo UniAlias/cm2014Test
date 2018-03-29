@@ -46,6 +46,18 @@ app.get('/', function(req, res) {
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
     if (err) throw err;
+    //get the username of the currently logged in user
+    var uname = req.query.username;
+    db.collection('people').findOne({
+      "login.username": uname
+    }, function(err, result) {
+      if (err) throw err;
+      //console.log(uname+ ":" + result);
+      //finally we just send the result to the user page as "user"
+      res.render('pages/users', {
+        user: result
+      })
+    });
     //the result of the query is sent to the users page as the "users" array
     res.render('pages/users', {
       users: result
@@ -172,5 +184,18 @@ var datatostore = {
     console.log('saved to database')
     //when complete redirect to the index
     res.redirect('/')
+  })
+});
+
+
+//acquire the currently logged in user
+db.collection('people').findOne({
+  "login.username": uname
+}, function(err, result) {
+  if (err) throw err;
+  //console.log(uname+ ":" + result);
+  //finally we just send the result to the user page as "user"
+  res.render('pages/profile', {
+    user: result
   })
 });
