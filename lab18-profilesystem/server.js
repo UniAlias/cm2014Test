@@ -43,15 +43,7 @@ app.get('/', function(req, res) {
   //if the user is not logged in redirect them to the login page
   if(!req.session.loggedin){res.redirect('/login');return;}
 
-  //otherwise perfrom a search to return all the documents in the people collection
-  db.collection('people').find().toArray(function(err, result) {
-    if (err) throw err;
-    //the result of the query is sent to the users page as the "users" array
-    res.render('pages/users', {
-      users: result
-    })
-  });
-
+  //get the currently logged in user
   var uname2 = req.query.username;
   //console.log(username);
 
@@ -63,6 +55,18 @@ app.get('/', function(req, res) {
       user2: result
     })
   });
+
+
+  //otherwise perfrom a search to return all the documents in the people collection
+  db.collection('people').find().toArray(function(err, result) {
+    if (err) throw err;
+    //the result of the query is sent to the users page as the "users" array
+    res.render('pages/users', {
+      users: result
+    })
+  });
+
+
 
 
 });
