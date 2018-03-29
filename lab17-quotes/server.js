@@ -59,8 +59,7 @@ app.get('/allquotes', function(req, res) {
       output += "<p>" + result[i].quote + "</p>"
       output += "</div>"
     }
-    //res.send(output);
-    res.render(output);
+    res.send(output);
   });
 });
 
