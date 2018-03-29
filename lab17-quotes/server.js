@@ -62,7 +62,7 @@ app.get('/allquotes', function(req, res) {
     // res.send(output);
     res.render('pages/index', {
       result
-    }
+    });
   });
 });
 
