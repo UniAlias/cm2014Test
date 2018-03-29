@@ -52,15 +52,15 @@ app.get('/', function(req, res) {
     })
   });
 
-  var username = req.query.username;
-  console.log(username);
+  var uname2 = req.query.username;
+  //console.log(username);
 
   db.collection('people').findOne({
-    "login.username": username
+    "login.username": uname2
   }, function(err, result) {
     if (err) throw err;
     res.render('pages/users', {
-      user: result
+      user2: result
     })
   });
 
