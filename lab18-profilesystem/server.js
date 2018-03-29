@@ -53,8 +53,8 @@ app.get('/', function(req, res) {
     if (err) throw err;
     //console.log(uname+ ":" + result);
     //finally we just send the result to the user page as "user"
-    res.render('pages/profile', {
-      user: result
+    res.render('pages/users', {
+      user2: result
     })
   });
 
