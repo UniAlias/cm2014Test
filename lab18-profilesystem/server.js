@@ -53,6 +53,7 @@ app.get('/', function(req, res) {
   });
 
   var username = req.query.username;
+  console.log(username);
 
   db.collection('people').findOne({
     "login.username": username
