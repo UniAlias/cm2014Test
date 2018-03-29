@@ -55,7 +55,7 @@ app.get('/', function(req, res) {
   var username = req.query.username;
 
   db.collection('people').findOne({
-    "login.username": username;
+    "login.username": username
   }, function(err, result) {
     if (err) throw err;
     res.render('pages/users', {
