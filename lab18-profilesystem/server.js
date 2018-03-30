@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
 
   //get the currently logged in user
-  var uname2 = req.se;
+  
   //console.log(username);
 
   db.collection('people').findOne({
@@ -57,7 +57,6 @@ app.get('/', function(req, res) {
       user2: result
     })
   });
-
 
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
