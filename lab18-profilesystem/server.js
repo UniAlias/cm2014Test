@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
 
   //get the currently logged in user
-  var uname2 = req.session.currentuser​;
+  var uname2 = req.session.currentuser​
   //console.log(username);
 
   db.collection('people').findOne({
