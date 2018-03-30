@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
 
   //get the currently logged in user
-  var uname2 = req.session.currentuser​;
+  var uname2 = req.session.currentuser;
   //console.log(username);
 
   db.collection('people').findOne({
@@ -127,14 +127,14 @@ app.post('/dologin', function(req, res) {
   console.log(JSON.stringify(req.body))
   var uname = req.body.username;
   var pword = req.body.password;
-  req.session.currentuser = res.login.username;
+
 
   db.collection('people').findOne({"login.username":uname}, function(err, result) {
     if (err) throw err;//if there is an error, throw the error
     //if there is no result, redirect the user back to the login system as that username must not exist
     if(!result){res.redirect('/login');return}
     //if there is a result then check the password, if the password is correct set session loggedin to true and send the user to the index
-    if(result.login.password == pword){ req.session.loggedin = true; res.render('pages/users') res.redirect('/') }
+    if(result.login.password == pword){ req.session.loggedin = true; req.session.currentuser = result.login.username; res.render('pages/users') res.redirect('/') }
     //otherwise send them back to login
     else{res.redirect('/login')}
   });
