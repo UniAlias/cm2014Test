@@ -118,6 +118,11 @@ app.get('/logout', function(req, res) {
 });
 
 
+//this is for the update page render
+app.get('/updateuser', function(req, res) {
+  if (!req.session.loggedin){res.redirect('/login'); return;}
+  res.render('pages/update')
+});
 
 
 //********** POST ROUTES - Deal with processing data from forms ***************************
@@ -196,4 +201,26 @@ var datatostore = {
     //when complete redirect to the index
     res.redirect('/')
   })
+});
+
+
+//This is to update the user account
+app.post('/doupdate', function(req, res) {
+  console.log("We have made it to this point.")
+  var query = { username: req.body.username};
+  var newvalues = {$set: {
+    "gender": req.body.gender,
+    "name":{"title":req.body.title, "first": req.body.first, "last": req.body.last},
+    "location":{"street":req.body.street, "city": req.body.city,"state":req.body.state,"postcode":req.body.postcode},
+    "email":req.body.email,
+    "login":{"username":req.body.username,"password":req.body.password},
+    "dob":req.body.dob,"registered":Date(),
+    "picture":{"large":req.body.large,"medium",req.body.medium,"thumbnail":req.body.thumbnail},
+    "nat":req.body.nat}};
+
+  db.collection('people').updateOne(query,newvalues, function(err, result) {
+    if (err) throw err;
+    res.redirect('pages/profile');
+  });
+  
 });
