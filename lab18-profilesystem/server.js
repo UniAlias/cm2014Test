@@ -218,7 +218,7 @@ app.post('/doupdate', function(req, res) {
 
   db.collection('people').updateOne(query,newvalues, function(err, result) {
     if (err) throw err;
-    res.redirect('/users')
+    res.redirect('/');
   });
 
 });
