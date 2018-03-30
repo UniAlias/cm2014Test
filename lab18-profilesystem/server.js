@@ -126,7 +126,7 @@ app.post('/dologin', function(req, res) {
   console.log(JSON.stringify(req.body))
   var uname = req.body.username;
   var pword = req.body.password;
-  req.session.currentuser = result.login.username;
+  req.session.currentuser = res.login.username;
 
 
   db.collection('people').findOne({"login.username":uname}, function(err, result) {
