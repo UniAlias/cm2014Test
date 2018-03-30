@@ -45,13 +45,14 @@ app.get('/', function(req, res) {
 
   //get the currently logged in user
   var uname2 = req.session.currentuser;
-  console.log(uname2);
+  //console.log(uname2);
 
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
     if (err) throw err;
     //the result of the query is sent to the users page as the "users" array
     res.render('pages/users', {
+      currentuser: uname2
       users: result
     })
   });
