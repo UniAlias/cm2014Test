@@ -215,12 +215,12 @@ app.post('/doupdate', function(req, res) {
     "email":req.body.email,
     "login":{"username":req.body.username,"password":req.body.password},
     "dob":req.body.dob,"registered":Date(),
-    "picture":{"large":req.body.large,"medium",req.body.medium,"thumbnail":req.body.thumbnail},
+    "picture":{"large":req.body.large,"medium":req.body.medium,"thumbnail":req.body.thumbnail},
     "nat":req.body.nat}};
 
   db.collection('people').updateOne(query,newvalues, function(err, result) {
     if (err) throw err;
     res.redirect('pages/profile');
   });
-  
+
 });
