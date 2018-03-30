@@ -47,16 +47,16 @@ app.get('/', function(req, res) {
   var uname2 = req.session.currentuser;
   //console.log(username);
 
-  db.collection('people').findOne({
-    "login.username": uname2
-  }, function(err, result) {
-    if (err) throw err;
-    //console.log(uname+ ":" + result);
-    //finally we just send the result to the user page as "user"
-    res.render('pages/users', {
-      user2: result
-    })
-  });
+  // db.collection('people').findOne({
+  //   "login.username": uname2
+  // }, function(err, result) {
+  //   if (err) throw err;
+  //   //console.log(uname+ ":" + result);
+  //   //finally we just send the result to the user page as "user"
+  //   res.render('pages/users', {
+  //     user2: result
+  //   })
+  // });
 
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
