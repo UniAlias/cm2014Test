@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
 
   //get the currently logged in user
-  var uname2 = req.session.currentuser​
+  var uname2 = req.session.currentuser​;
   //console.log(username);
 
   db.collection('people').findOne({
@@ -127,7 +127,7 @@ app.post('/dologin', function(req, res) {
   console.log(JSON.stringify(req.body))
   var uname = req.body.username;
   var pword = req.body.password;
-  req.session.currentuser = result.login.username;
+  var req.session.currentuser = result.login.username;
 
   db.collection('people').findOne({"login.username":uname}, function(err, result) {
     if (err) throw err;//if there is an error, throw the error
