@@ -208,13 +208,8 @@ var datatostore = {
 app.post('/doupdate', function(req, res) {
   console.log("We have made it to this point.")
   var query = { username: req.body.username};
-  var newvalues = {$set: {
-    gender: req.body.gender,
-    name:{title:req.body.title, first: req.body.first, last: req.body.last},
-    location:{street:req.body.street, city: req.body.city,state:req.body.state,postcode:req.body.postcode},
-    email:req.body.email,
-    login:{username:req.body.username,password:req.body.password},
-    dob:req.body.dob,registered:Date()}};
+  var newvalues = {$set: {"gender": req.body.gender,"name.title":req.body.title,"name.first": req.body.first, "name.last": req.body.last, "location.street":req.body.street, "location.city": req.body.city,"location.state":req.body.state,"location.postcode":req.body.postcode,
+    "email": req.body.email,"login.username":req.body.username,"login.password":req.body.password,"dob":req.body.dob,"registered":Date()}};
 
   db.collection('people').updateOne(query,newvalues, function(err, result) {
     if (err) throw err;
